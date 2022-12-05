@@ -12,12 +12,12 @@ import { FieldError } from "react-hook-form";
 interface InputProps extends ChakraInputProps {
   name: string;
   label?: string;
-  error: FieldError;
+  error?: FieldError;
 }
 
 //Para a ref ser passada e funcionar precisamos alterar para export const
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { name, label, error, ...rest },
+  { name, label, error = null, ...rest },
   ref
 ) => {
   return (
@@ -26,7 +26,6 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       <ChakraInput
         name={name}
         id={name}
-        type="email"
         focusBorderColor="pink.500"
         bgColor="gray.900"
         variant="filled"
